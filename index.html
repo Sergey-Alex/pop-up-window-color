@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  div {
+      width: 100px;
+      height: 100px;
+      margin-top: 20px;
+      margin-left: 30px;
+      margin-right: 30px;
+      display:inline-block;
+  }
+    #red {
+        background-color: red;
+    }
+    #green {
+        background-color: green;
+    }
+    #yellow {
+        background-color: yellow;
+    }
+    span {
+        position: absolute;
+        border: 1px solid wheat;
+        background: wheat;
+    }
+</style>
+<body>
+<div id="red"></div>
+<div id="green"></div>
+<div id="yellow"></div>
+<script>
+
+    let quadro = document.querySelectorAll('div');
+
+    for (let elem of quadro){
+       elem.onmousemove = function (e) {
+         let span = document.createElement('span');
+         span.innerHTML = this.id;
+         span.classList.add('span');
+         elem.appendChild(span);
+         span.style.left  = e.clientX + 15 + 'px';
+         span.style.top  = e.clientY + 15 + 'px';
+       }
+       elem.onmouseout = function () {
+           let span = document.querySelector('span');
+            span.parentElement.removeChild(span);
+       }
+
+    }
+
+
+</script>
+</body>
+</html>
